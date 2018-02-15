@@ -5,8 +5,8 @@
         android:icon="@mipmap/logo"/>
     <item android:title="@string/btm_nav_discovery"
         android:id="@+id/btm_nav_discovery"
-        android:icon="@mipmap/ic_explore_black_24dp"/>
+        android:icon="@drawable/ic_explore_black_24dp"/>
     <item android:title="@string/btm_about"
         android:id="@+id/btm_nav_about"
-        android:icon="@mipmap/ic_info_black_24dp"/>
+        android:icon="@drawable/ic_info_black_24dp"/>
 </menu>
