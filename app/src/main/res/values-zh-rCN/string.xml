@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">2401的实验室</string>
+    <string name="btm_nav_blog">博客</string>
+    <string name="btm_nav_discovery">发现</string>
+    <string name="btm_about">关于</string>
+    <string name="about_tip">做你喜欢做的事,什么时候都不会太晚</string>
+    <string name="about_version_name">版本号</string>
+    <string name="about_donate">捐赠</string>
+    <string name="about_feedback">反馈</string>
+    <string name="about_region">中国,云南</string>
+    <string name="about_source_code_on_github">源代码</string>
+    <string name="msg_mail_not_found">找不到邮件App</string>
+    <string name="feedback_title">反馈</string>
+
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/btm_nav_blog"
+        android:id="@+id/btm_nav_blog"
+        android:icon="@mipmap/logo"/>
+    <item android:title="@string/btm_nav_discovery"
+        android:id="@+id/btm_nav_discovery"
+        android:icon="@mipmap/ic_explore_black_24dp"/>
+    <item android:title="@string/btm_about"
+        android:id="@+id/btm_nav_about"
+        android:icon="@mipmap/ic_info_black_24dp"/>
+</menu>
