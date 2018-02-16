@@ -14,17 +14,15 @@ import top.zsh2401.lab.ui.viewitem.DiscoveryLayout
 
 class MainActivity : AppCompatActivity(),IMainActivityApi {
     override fun showBottomNavigation() {
-//        mBtmNav.clearAnimation()
-        mBtmNav.animate()?.translationY(mBtmNav.height.toFloat())?.duration  = 200
+        mBtmNav.animate()?.translationY(0.toFloat())?.duration  = 50
     }
 
     override fun hideBottomNavigation() {
-//        mBtmNav.clearAnimation()
-        mBtmNav.animate()?.translationY(0.toFloat())?.duration  = 200
+        mBtmNav.animate()?.translationY(mBtmNav.height.toFloat())?.duration  = 50
     }
 
     override fun navigationIsShown(): Boolean {
-        return mBtmNav.height == mBtmNav.height
+        return mBtmNav.y < mBtmNav.height
     }
 
     override fun getBottomNavigation(): BottomNavigationView {
@@ -59,18 +57,25 @@ class MainActivity : AppCompatActivity(),IMainActivityApi {
                     1->mBtmNav.selectedItemId = R.id.btm_nav_discovery
                     2->mBtmNav.selectedItemId = R.id.btm_nav_about
                 }
+                if(!navigationIsShown()){
+                    showBottomNavigation()
+                }
             }
         })
         mBtmNav.setOnNavigationItemSelectedListener { item->
             when(item.itemId){
-                R.id.btm_nav_blog->{mViewPager.setCurrentItem(0,false);true}
-                R.id.btm_nav_discovery->{mViewPager.setCurrentItem(1,false);true}
-                R.id.btm_nav_about->{mViewPager.setCurrentItem(2,false);true}
+                R.id.btm_nav_blog->{mViewPager.setCurrentItem(0,false);}
+                R.id.btm_nav_discovery->{mViewPager.setCurrentItem(1,false);}
+                R.id.btm_nav_about->{mViewPager.setCurrentItem(2,false);}
                 else->false
             }
+            true
         }
         blogLayout = BlogLayout(this,this)
-        views = arrayOf(blogLayout,DiscoveryLayout(this),AboutLayout(this))
+        views = arrayOf(
+                blogLayout,
+                DiscoveryLayout(this,this),
+                AboutLayout(this,this))
         mViewPager.adapter = UniversalViewAdapter(views)
     }
     override fun onBackPressed() {

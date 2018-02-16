@@ -14,6 +14,7 @@ import android.webkit.WebViewClient
 import android.widget.LinearLayout
 import top.zsh2401.lab.*
 import top.zsh2401.lab.ui.activities.IMainActivityApi
+import top.zsh2401.lab.ui.custom.IScrollListener
 import top.zsh2401.lab.ui.custom.ObservableWebView
 import top.zsh2401.lab.util.BLOG_HOST
 import top.zsh2401.lab.util.hostIs
@@ -22,13 +23,12 @@ import top.zsh2401.lab.util.hostIs
  * Created by zsh24 on 02/16/2018.
  */
 class BlogLayout(context: Context,private val api: IMainActivityApi?=null):
-        LinearLayout(context),ObservableWebView.OnScrollListener {
-    override fun onScroll(dx: Int, dy: Int) {
-        Log.d("Blog View","dx:$dx dy:$dy")
+        LinearLayout(context),IScrollListener {
+    override fun onScroll(view:View,dx: Int, dy: Int) {
         if(dy>30){
-            api?.showBottomNavigation()
-        }else if(dy<-10){
             api?.hideBottomNavigation()
+        }else if(dy<-10){
+            api?.showBottomNavigation()
         }
     }
     private val swipeLayout:SwipeRefreshLayout
