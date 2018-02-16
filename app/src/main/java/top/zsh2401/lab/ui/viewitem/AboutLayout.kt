@@ -1,7 +1,5 @@
 package top.zsh2401.lab.ui.viewitem
 
-import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -47,7 +45,7 @@ class AboutLayout(context: Context):LinearLayout(context),View.OnClickListener {
         findViewById<LinearLayout>(R.id.ll_card_about_1_donate).setOnClickListener(this)
         findViewById<LinearLayout>(R.id.ll_card_about_1_feedback).setOnClickListener(this)
         findViewById<LinearLayout>(R.id.ll_card_about_2_os).setOnClickListener(this)
-        findViewById<TextView>(R.id.text_view_version).text =
-                App.current.getString(R.string.about_version_name) + " " + getVersionName()
+        (findViewById<TextView>(R.id.text_view_version)).text =
+                App.current.getString(R.string.about_version_name) + " " + CURRENT_VERSION_NAME
     }
 }
