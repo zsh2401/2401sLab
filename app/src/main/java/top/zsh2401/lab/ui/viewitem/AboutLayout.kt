@@ -9,11 +9,12 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import top.zsh2401.lab.*
+import top.zsh2401.lab.ui.activities.IMainActivityApi
 
 /**
  * Created by zsh24 on 02/16/2018.
  */
-class AboutLayout(context: Context):LinearLayout(context),View.OnClickListener {
+class AboutLayout(context: Context,private val api: IMainActivityApi?=null):LinearLayout(context),View.OnClickListener {
     override fun onClick(p0: View?) {
         when(p0!!.id){
             R.id.ll_card_about_1_feedback->{

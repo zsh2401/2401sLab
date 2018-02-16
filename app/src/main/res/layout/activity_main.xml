@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,17 +7,20 @@
     android:orientation="vertical"
     tools:context="top.zsh2401.lab.ui.activities.MainActivity">
 
-    <android.support.v4.view.ViewPager
+    <top.zsh2401.lab.ui.custom.CustomViewPager
         android:id="@+id/view_pager_main"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-    </android.support.v4.view.ViewPager>
+        android:layout_height="match_parent">
+    </top.zsh2401.lab.ui.custom.CustomViewPager>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/btm_nav_main"
+        android:backgroundTintMode="add"
+        android:backgroundTint="#ffffff"
+        android:background="#ffffff"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         app:menu="@menu/btm_nav_bar_menu"
         android:layout_height="wrap_content">
     </android.support.design.widget.BottomNavigationView>
-</LinearLayout>
+</RelativeLayout>

@@ -12,7 +12,24 @@ import top.zsh2401.lab.ui.viewitem.AboutLayout
 import top.zsh2401.lab.ui.viewitem.BlogLayout
 import top.zsh2401.lab.ui.viewitem.DiscoveryLayout
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),IMainActivityApi {
+    override fun showBottomNavigation() {
+//        mBtmNav.clearAnimation()
+        mBtmNav.animate()?.translationY(mBtmNav.height.toFloat())?.duration  = 200
+    }
+
+    override fun hideBottomNavigation() {
+//        mBtmNav.clearAnimation()
+        mBtmNav.animate()?.translationY(0.toFloat())?.duration  = 200
+    }
+
+    override fun navigationIsShown(): Boolean {
+        return mBtmNav.height == mBtmNav.height
+    }
+
+    override fun getBottomNavigation(): BottomNavigationView {
+        return mBtmNav
+    }
 
     private lateinit var mBtmNav:BottomNavigationView
     private lateinit var mViewPager:ViewPager
@@ -46,13 +63,13 @@ class MainActivity : AppCompatActivity() {
         })
         mBtmNav.setOnNavigationItemSelectedListener { item->
             when(item.itemId){
-                R.id.btm_nav_blog->{mViewPager.currentItem = 0;true}
-                R.id.btm_nav_discovery->{mViewPager.currentItem=1;true}
-                R.id.btm_nav_about->{mViewPager.currentItem=2;true}
+                R.id.btm_nav_blog->{mViewPager.setCurrentItem(0,false);true}
+                R.id.btm_nav_discovery->{mViewPager.setCurrentItem(1,false);true}
+                R.id.btm_nav_about->{mViewPager.setCurrentItem(2,false);true}
                 else->false
             }
         }
-        blogLayout = BlogLayout(this)
+        blogLayout = BlogLayout(this,this)
         views = arrayOf(blogLayout,DiscoveryLayout(this),AboutLayout(this))
         mViewPager.adapter = UniversalViewAdapter(views)
     }
