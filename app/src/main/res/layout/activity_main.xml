@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="top.zsh2401.lab.ui.activities.MainActivity">
+    tools:context="top.zsh2401.lab.ux.activities.MainActivity">
 
-    <top.zsh2401.lab.ui.custom.CustomViewPager
+    <top.zsh2401.lab.ux.custom.CustomViewPager
         android:id="@+id/view_pager_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </top.zsh2401.lab.ui.custom.CustomViewPager>
+    </top.zsh2401.lab.ux.custom.CustomViewPager>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/btm_nav_main"

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:name=".App"
         android:theme="@style/AppTheme">
-        <activity android:name="top.zsh2401.lab.ui.activities.MainActivity">
+        <activity android:name="top.zsh2401.lab.ux.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

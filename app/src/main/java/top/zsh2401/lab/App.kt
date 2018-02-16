@@ -9,6 +9,7 @@ class App:Application() {
     companion object {
         val current:App get() = _current
         private lateinit var _current:App
+
     }
     override fun onCreate() {
         super.onCreate()

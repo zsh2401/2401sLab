@@ -11,4 +11,12 @@
     <string name="about_source_code_on_github">Source code on github</string>
     <string name="msg_mail_not_found">You have no install any e-mail app</string>
     <string name="feedback_title">2401s Lab feedback</string>
+
+    <string name="title_donate">Donate</string>
+    <string name="msg_donate">Make android better together</string>
+    <string name="btn_alipay">Alipay</string>
+    <string name="btn_copy_alipay">Copy alipay account</string>
+    <string name="btn_copy_alipay_redpacket_code">Copy alipay redpacket code</string>
+    <string name="btn_copy_wechat">Copy wechat account</string>
+    <string name="btn_copied">Copied</string>
 </resources>

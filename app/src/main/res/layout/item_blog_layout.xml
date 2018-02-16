@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:id="@+id/swipe_refresh"
     android:layout_height="match_parent">
-        <top.zsh2401.lab.ui.custom.ObservableWebView
+        <top.zsh2401.lab.ux.custom.ObservableWebView
             android:id="@+id/web_view_blog"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        </top.zsh2401.lab.ui.custom.ObservableWebView>
+        </top.zsh2401.lab.ux.custom.ObservableWebView>
 </android.support.v4.widget.SwipeRefreshLayout>
