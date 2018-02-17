@@ -29,7 +29,7 @@ class DiscoveryLayout(context:Context,private val api: IMainActivityApi?=null):
         initViewPager()
     }
     private fun initViewPager(){
-        val pages:Array<View> = arrayOf(NormalDiscoveryPage(context),AcpDiscoveryPage(context))
+        val pages:Array<View> = arrayOf(NormalDiscoveryPage(context,api),AcpDiscoveryPage(context,api))
         view_pager_discovery.adapter = UniversalViewAdapter(pages)
         tab_discovery.setupWithViewPager(view_pager_discovery)
     }

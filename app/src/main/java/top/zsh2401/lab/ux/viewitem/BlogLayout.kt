@@ -10,7 +10,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.item_blog_layout.view.*
-import top.zsh2401.lab.R
+import top.zsh2401.lab.*
 import top.zsh2401.lab.util.BLOG_HOST
 import top.zsh2401.lab.util.hostIs
 import top.zsh2401.lab.ux.activities.IMainActivityApi
@@ -29,11 +29,12 @@ class BlogLayout(context: Context,private val api: IMainActivityApi?=null):
         }
     }
     init {
+
         LayoutInflater.from(context).inflate(R.layout.item_blog_layout,this)
         swipe_refresh.setOnRefreshListener {
             web_view_blog.reload()
         }
-
+        swipe_refresh.setColorSchemeColors(App.current.getColor(R.color.colorBasic))
         web_view_blog.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
         web_view_blog.settings.javaScriptEnabled = true
         web_view_blog.webViewClient = object:WebViewClient(){
