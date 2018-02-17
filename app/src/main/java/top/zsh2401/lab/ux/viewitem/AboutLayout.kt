@@ -14,6 +14,10 @@ import top.zsh2401.lab.ux.activities.IMainActivityApi
 import top.zsh2401.lab.util.copyAlipayRedpacketCode
 import top.zsh2401.lab.util.copyWechatAccount
 import top.zsh2401.lab.util.gotoAlipay
+import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.card_about_0.view.*
+import kotlinx.android.synthetic.main.card_about_1.view.*
+import kotlinx.android.synthetic.main.card_about_2.view.*
 
 /**
  * Created by zsh24 on 02/16/2018.
@@ -68,10 +72,9 @@ class AboutLayout(context: Context,private val api: IMainActivityApi?=null):Line
 
     init {
         LayoutInflater.from(context).inflate(R.layout.item_about_layout,this)
-        findViewById<LinearLayout>(R.id.ll_card_about_1_donate).setOnClickListener(this)
-        findViewById<LinearLayout>(R.id.ll_card_about_1_feedback).setOnClickListener(this)
-        findViewById<LinearLayout>(R.id.ll_card_about_2_os).setOnClickListener(this)
-        (findViewById<TextView>(R.id.text_view_version)).text =
-                App.current.getString(R.string.about_version_name) + " " + CURRENT_VERSION_NAME
+        ll_card_about_1_donate.setOnClickListener(this)
+        ll_card_about_1_donate.setOnClickListener(this)
+        ll_card_about_2_os.setOnClickListener(this)
+        text_view_version.text = App.current.getString(R.string.about_version_name) + " " + CURRENT_VERSION_NAME
     }
 }

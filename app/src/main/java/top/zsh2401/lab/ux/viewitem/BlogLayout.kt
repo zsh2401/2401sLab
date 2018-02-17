@@ -3,19 +3,18 @@ package top.zsh2401.lab.ux.viewitem
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.support.v4.widget.SwipeRefreshLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.LinearLayout
-import top.zsh2401.lab.*
-import top.zsh2401.lab.ux.activities.IMainActivityApi
-import top.zsh2401.lab.ux.custom.IScrollListener
-import top.zsh2401.lab.ux.custom.ObservableWebView
+import kotlinx.android.synthetic.main.item_blog_layout.view.*
+import top.zsh2401.lab.R
 import top.zsh2401.lab.util.BLOG_HOST
 import top.zsh2401.lab.util.hostIs
+import top.zsh2401.lab.ux.activities.IMainActivityApi
+import top.zsh2401.lab.ux.custom.IScrollListener
 
 /**
  * Created by zsh24 on 02/16/2018.
@@ -29,21 +28,18 @@ class BlogLayout(context: Context,private val api: IMainActivityApi?=null):
             api?.showBottomNavigation()
         }
     }
-    private val swipeLayout:SwipeRefreshLayout
-    private val mWebView:ObservableWebView
     init {
         LayoutInflater.from(context).inflate(R.layout.item_blog_layout,this)
-        swipeLayout = findViewById(R.id.swipe_refresh)
-        mWebView = findViewById(R.id.web_view_blog)
-        swipeLayout.setOnRefreshListener {
-            mWebView.reload()
+        swipe_refresh.setOnRefreshListener {
+            web_view_blog.reload()
         }
-        mWebView.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
-        mWebView.settings.javaScriptEnabled = true
-        mWebView.webViewClient = object:WebViewClient(){
+
+        web_view_blog.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
+        web_view_blog.settings.javaScriptEnabled = true
+        web_view_blog.webViewClient = object:WebViewClient(){
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-                swipeLayout.isRefreshing = false
+                swipe_refresh.isRefreshing = false
             }
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                 return if(url!!.hostIs(BLOG_HOST)){
@@ -57,12 +53,12 @@ class BlogLayout(context: Context,private val api: IMainActivityApi?=null):
                 }
             }
         }
-        mWebView.onScrollListener = this
-        mWebView.loadUrl("http://zsh2401.top")
+        web_view_blog.onScrollListener = this
+        web_view_blog.loadUrl("http://zsh2401.top")
     }
     fun tryGoBack():Boolean{
-        return if(mWebView.canGoBack()){
-            mWebView.goBack()
+        return if(web_view_blog.canGoBack()){
+            web_view_blog.goBack()
             true
         }else{
             false

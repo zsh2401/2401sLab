@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.view.ViewPager
 import android.view.View
+import kotlinx.android.synthetic.main.activity_main.*
 import top.zsh2401.lab.R
 import top.zsh2401.lab.ux.adapter.UniversalViewAdapter
 import top.zsh2401.lab.ux.viewitem.AboutLayout
@@ -13,23 +14,21 @@ import top.zsh2401.lab.ux.viewitem.DiscoveryLayout
 
 class MainActivity : AppCompatActivity(),IMainActivityApi {
     override fun showBottomNavigation() {
-        mBtmNav.animate()?.translationY(0.toFloat())?.duration  = 50
+        btm_nav_main.animate()?.translationY(0.toFloat())?.duration  = 50
     }
 
     override fun hideBottomNavigation() {
-        mBtmNav.animate()?.translationY(mBtmNav.height.toFloat())?.duration  = 50
+        btm_nav_main.animate()?.translationY(btm_nav_main.height.toFloat())?.duration  = 50
     }
 
     override fun navigationIsShown(): Boolean {
-        return mBtmNav.y < mBtmNav.height
+        return btm_nav_main.y < btm_nav_main.height
     }
 
     override fun getBottomNavigation(): BottomNavigationView {
-        return mBtmNav
+        return btm_nav_main
     }
 
-    private lateinit var mBtmNav:BottomNavigationView
-    private lateinit var mViewPager:ViewPager
     private lateinit var views:Array<View>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,33 +38,28 @@ class MainActivity : AppCompatActivity(),IMainActivityApi {
 
     private lateinit var blogLayout:BlogLayout
     private fun init(){
-        initViewObj()
         initViewPager()
     }
-    private fun initViewObj(){
-        mViewPager = findViewById(R.id.view_pager_main)
-        mBtmNav = findViewById(R.id.btm_nav_main)
-    }
     private fun initViewPager(){
-        mViewPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
+        view_pager_main.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {}
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
             override fun onPageSelected(position: Int) {
                 when(position){
-                    0->mBtmNav.selectedItemId = R.id.btm_nav_blog
-                    1->mBtmNav.selectedItemId = R.id.btm_nav_discovery
-                    2->mBtmNav.selectedItemId = R.id.btm_nav_about
+                    0->btm_nav_main.selectedItemId = R.id.btm_nav_blog
+                    1->btm_nav_main.selectedItemId = R.id.btm_nav_discovery
+                    2->btm_nav_main.selectedItemId = R.id.btm_nav_about
                 }
                 if(!navigationIsShown()){
                     showBottomNavigation()
                 }
             }
         })
-        mBtmNav.setOnNavigationItemSelectedListener { item->
+        btm_nav_main.setOnNavigationItemSelectedListener { item->
             when(item.itemId){
-                R.id.btm_nav_blog->{mViewPager.setCurrentItem(0,false);}
-                R.id.btm_nav_discovery->{mViewPager.setCurrentItem(1,false);}
-                R.id.btm_nav_about->{mViewPager.setCurrentItem(2,false);}
+                R.id.btm_nav_blog->{view_pager_main.setCurrentItem(0,false);}
+                R.id.btm_nav_discovery->{view_pager_main.setCurrentItem(1,false);}
+                R.id.btm_nav_about->{view_pager_main.setCurrentItem(2,false);}
                 else->false
             }
             true
@@ -75,10 +69,10 @@ class MainActivity : AppCompatActivity(),IMainActivityApi {
                 blogLayout,
                 DiscoveryLayout(this,this),
                 AboutLayout(this,this))
-        mViewPager.adapter = UniversalViewAdapter(views)
+        view_pager_main.adapter = UniversalViewAdapter(views)
     }
     override fun onBackPressed() {
-        if(mViewPager.currentItem != 0){
+        if(view_pager_main.currentItem != 0){
             super.onBackPressed()
             return
         }

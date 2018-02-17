@@ -30,7 +30,7 @@ class UniversalViewAdapter(private val views:Array<View>,
         return try{
             titles!![position]
         }catch (ex:Exception){
-            super.getPageTitle(position)
+            return views[position].toString()
         }
     }
 }
