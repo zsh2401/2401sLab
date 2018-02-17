@@ -1,6 +1,7 @@
 package top.zsh2401.lab.ux.viewitem
 
 import android.content.Context
+import android.support.design.widget.TabLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
@@ -29,8 +30,21 @@ class DiscoveryLayout(context:Context,private val api: IMainActivityApi?=null):
         initViewPager()
     }
     private fun initViewPager(){
-        val pages:Array<View> = arrayOf(NormalDiscoveryPage(context,api),AcpDiscoveryPage(context,api))
+        val pages:Array<View> = arrayOf(
+                NormalDiscoveryPage(context,api),
+                AcpDiscoveryPage(context,api))
         view_pager_discovery.adapter = UniversalViewAdapter(pages)
         tab_discovery.setupWithViewPager(view_pager_discovery)
+        tab_discovery.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                if(tab?.position == 1){
+                    api?.showBottomNavigation()
+                    app_bar_discovery.setExpanded(true,true)
+                }
+
+            }
+        })
     }
 }
